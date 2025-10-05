@@ -1,0 +1,167 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: #252525;
+  background-color: #f7f2e9;
+  border-bottom: 1.6rem solid #edc84b;
+  min-height: 100vh;
+  padding: 3.2rem 3.2rem 6rem;
+  font-family: Roboto Mono, sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  flex-direction: column;
+  align-items: center;
+  gap: 4.8rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+}
+
+.header {
+  align-self: stretch;
+}
+
+.header h1 {
+  color: #edc84b;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  width: 100%;
+  font-size: 5.2rem;
+  font-weight: 300;
+  display: block;
+  position: relative;
+}
+
+.header h1:before, .header h1:after {
+  content: "";
+  background-color: #edc84b;
+  width: 12rem;
+  height: 3px;
+  display: block;
+  position: absolute;
+  top: calc(50% - 1px);
+}
+
+.header h1:before {
+  left: 0;
+}
+
+.header h1:after {
+  right: 0;
+}
+
+.menu {
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  display: flex;
+}
+
+.menu h2 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  padding: 1rem 0;
+  font-size: 2.4rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.menu > p {
+  text-align: center;
+  width: 80%;
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.pizzas {
+  grid-template-columns: 1fr 1fr;
+  gap: 4.8rem;
+  list-style: none;
+  display: grid;
+}
+
+.pizza {
+  gap: 3.2rem;
+  display: flex;
+}
+
+.pizza img {
+  aspect-ratio: 1;
+  align-self: start;
+  width: 12rem;
+}
+
+.pizza div {
+  flex-direction: column;
+  gap: .8rem;
+  padding: .4rem 0;
+  display: flex;
+}
+
+.pizza h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.pizza p {
+  margin-bottom: auto;
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+.pizza span {
+  font-size: 1.6rem;
+  display: block;
+}
+
+.pizza.sold-out {
+  color: #888;
+}
+
+.pizza.sold-out img {
+  filter: grayscale();
+  opacity: .8;
+}
+
+.footer {
+  font-size: 1.4rem;
+}
+
+.order {
+  flex-direction: column;
+  align-items: center;
+  gap: 2.4rem;
+  display: flex;
+}
+
+.btn {
+  color: inherit;
+  cursor: pointer;
+  background-color: #edc84b;
+  border: none;
+  padding: 1.4rem 3.2rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.btn:hover {
+  background-color: #e9bb24;
+}
+/*# sourceMappingURL=public.d91c94e1.css.map */
