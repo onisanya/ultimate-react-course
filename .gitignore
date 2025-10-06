@@ -1,24 +1,123 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+
 # dependencies
-/03-pure-react/pizza-menu//node_modules
-/03-pure-react/pizza-menu//.pnp
-/03-pure-react/pizza-menu/.pnp.js
-/03-pure-react/pizza-menu/.parcel-cache
-/03-pure-react/pizza-menu/parcel-cache
+/01-pure-react/pizza-menu/node_modules
+/01-pure-react/pizza-menu/.pnp
+/01-pure-react/pizza-menu/.pnp.js
+/01-pure-react/pizza-menu/.parcel-cache/*
+/01-pure-react/pizza-menu/parcel-cache/*
 # testing
-/03-pure-react/pizza-menu//coverage
+/01-pure-react/pizza-menu/coverage
 
 # production
-/03-pure-react/pizza-menu/build
+/01-pure-react/pizza-menu/build
 
 # misc
-/03-pure-react/pizza-menu/.DS_Store
-/03-pure-react/pizza-menu/.env.local
-/03-pure-react/pizza-menu/.env.development.local
-/03-pure-react/pizza-menu/.env.test.local
-/03-pure-react/pizza-menu/.env.production.local
+/01-pure-react/pizza-menu/.DS_Store
+/01-pure-react/pizza-menu/.env.local
+/01-pure-react/pizza-menu/.env.development.local
+/01-pure-react/pizza-menu/.env.test.local
+/01-pure-react/pizza-menu/.env.production.local
 
-/03-pure-react/pizza-menu/npm-debug.log*
-/03-pure-react/pizza-menu/yarn-debug.log*
-/03-pure-react/pizza-menu/yarn-error.log*
+/01-pure-react/pizza-menu/npm-debug.log*
+/01-pure-react/pizza-menu/yarn-debug.log*
+/01-pure-react/pizza-menu/yarn-error.log*
+
+# dependencies
+/03-pure-react/starter/node_modules
+/03-pure-react/starter/.pnp
+/03-pure-react/starter/.pnp.js
+/03-pure-react/starter/.parcel-cache/*
+/03-pure-react/starter/parcel-cache/*
+# testing
+/03-pure-react/starter/coverage
+
+# production
+/03-pure-react/starter/build
+
+# misc
+/03-pure-react/starter/.DS_Store
+/03-pure-react/starter/.env.local
+/03-pure-react/starter/.env.development.local
+/03-pure-react/starter/.env.test.local
+/03-pure-react/starter/.env.production.local
+
+/03-pure-react/starter/npm-debug.log*
+/03-pure-react/starter/yarn-debug.log*
+/03-pure-react/starter/yarn-error.log*
+
+/03-pure-react/final/*
+
+
+/04-steps/final/*
+# dependencies
+/04-steps/starter/node_modules
+/04-steps/starter/.pnp
+/04-steps/starter/.pnp.js
+/04-steps/starter/.parcel-cache
+/04-steps/starter/parcel-cache
+# testing
+/04-steps/starter/coverage
+/04-steps/starter/coverage
+
+# production
+/04-steps/starter/build
+/04-steps/starter/build
+
+# misc
+/04-steps/starter/.DS_Store
+/04-steps/starter/.env.local
+/04-steps/starter/.env.development.local
+/04-steps/starter/.env.test.local
+/04-steps/starter/.env.production.local
+/04-steps/starter/.DS_Store
+/04-steps/starter/.env.local
+/04-steps/starter/.env.development.local
+/04-steps/starter/.env.test.local
+/04-steps/starter/.env.production.local
+
+/04-steps/starter/npm-debug.log*
+/04-steps/starter/yarn-debug.log*
+/04-steps/starter/yarn-error.log*
+
+/05-travel-list/final/*
+/06-eat-and-split/final/*
+/07-usepopcorn/final/*
+/08-how-react-works/final/*
+/09-classy-weather/final/*
+/10-react-quiz/final/*
+/11-worldwise/final/*
+/12-atomic-blog/final/*
+/13-workout-timer/final/*
+
+/15-redux-intro/final/*
+/16-apollo-graphql/final/*
+/17-react-nature/final/*
+/18-react-in-5-minutes/final/*
+/19-react-interview-questions/final/*
+/20-manual-ssr/final/*
+/21-the-wild-oasis-website/final/*
+/22-nextjs-pages-router/final/*
+/04-steps/starter/npm-debug.log*
+/04-steps/starter/yarn-debug.log*
+/04-steps/starter/yarn-error.log*
+
+/05-travel-list/final/*
+/06-eat-and-split/final/*
+/07-usepopcorn/final/*
+/08-how-react-works/final/*
+/09-classy-weather/final/*
+/10-react-quiz/final/*
+/11-worldwise/final/*
+/12-atomic-blog/final/*
+/13-workout-timer/final/*
+
+/15-redux-intro/final/*
+/16-apollo-graphql/final/*
+/17-react-nature/final/*
+/18-react-in-5-minutes/final/*
+/19-react-interview-questions/final/*
+/20-manual-ssr/final/*
+/21-the-wild-oasis-website/final/*
+/22-nextjs-pages-router/final/*
