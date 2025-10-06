@@ -1,22 +1,36 @@
 import "./index.css";
 
+const messages = [
+  "Learn React ⚛️",
+  "Apply for jobs 💼",
+  "Invest your new income 💸",
+];
+
 function App() {
+  const step = 1;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="logo192.png" className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="steps">
+      <div className="numbers">
+        <div className={`${step >= 1 ? "active" : ""}`}>1</div>
+        <div className={`${step >= 2 ? "active" : ""}`}>2</div>
+        <div className={`${step >= 3 ? "active" : ""}`}>3</div>
+      </div>
+
+      <p className="message">{messages[step - 1]}</p>
+      <div className="buttons">
+        <button
+          className="button"
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
         >
-          Learn React
-        </a>
-      </header>
+          Previous
+        </button>
+        <button
+          className="button"
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
