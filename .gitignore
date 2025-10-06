@@ -1,0 +1,24 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/01-pure-react/pizza-menu//node_modules
+/01-pure-react/pizza-menu//.pnp
+/01-pure-react/pizza-menu/.pnp.js
+/01-pure-react/pizza-menu/.parcel-cache
+/01-pure-react/pizza-menu/parcel-cache
+# testing
+/01-pure-react/pizza-menu//coverage
+
+# production
+/01-pure-react/pizza-menu/build
+
+# misc
+/01-pure-react/pizza-menu/.DS_Store
+/01-pure-react/pizza-menu/.env.local
+/01-pure-react/pizza-menu/.env.development.local
+/01-pure-react/pizza-menu/.env.test.local
+/01-pure-react/pizza-menu/.env.production.local
+
+/01-pure-react/pizza-menu/npm-debug.log*
+/01-pure-react/pizza-menu/yarn-debug.log*
+/01-pure-react/pizza-menu/yarn-error.log*
