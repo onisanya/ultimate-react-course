@@ -1,21 +1,26 @@
 import { useState } from "react";
 
-function App() {
+export default function App() {
   const [items, setItems] = useState([]);
   const handleAddItem = (item) => {
     setItems((items) => [...items, item]);
   };
 
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
+  console.log("items:", items);
+
   return (
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <TravelList items={items} />
+      <TravelList items={items} onDeleteItem={handleDeleteItem} />
       <Stats />
     </div>
   );
 }
-
 function Logo() {
   return (
     <div className="app-header">
@@ -24,11 +29,11 @@ function Logo() {
   );
 }
 
-function TravelList({ items }) {
+function TravelList({ items, onDeleteItem }) {
   return (
     <ul className="list">
       {items.map((item) => (
-        <Item item={item} key={item.id} />
+        <Item item={item} DeleteItem={onDeleteItem} key={item.id} />
       ))}
     </ul>
   );
@@ -83,7 +88,7 @@ function Form({ onAddItem }) {
   );
 }
 
-function Item({ item }) {
+function Item({ item, DeleteItem }) {
   return (
     <li className="item">
       <input type="checkbox" />
@@ -91,7 +96,9 @@ function Item({ item }) {
         {item.quantity > 1 ? `(${item.quantity} x )` : ""}
         {item.description}
       </span>
-      <button className="delete">❌</button>
+      <button className="delete" onClick={() => DeleteItem(item.id)}>
+        ❌
+      </button>
     </li>
   );
 }
@@ -103,5 +110,3 @@ function Stats() {
     </footer>
   );
 }
-
-export default App;
