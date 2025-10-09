@@ -152,6 +152,11 @@ input {
   align-content: start;
 }
 
+.item__packed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
 .list li {
   display: flex;
   align-items: center;

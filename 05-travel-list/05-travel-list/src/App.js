@@ -6,6 +6,13 @@ export default function App() {
     setItems((items) => [...items, item]);
   };
 
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
@@ -16,11 +23,16 @@ export default function App() {
     <div className="app">
       <Logo />
       <Form onAddItem={handleAddItem} />
-      <TravelList items={items} onDeleteItem={handleDeleteItem} />
+      <TravelList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
       <Stats />
     </div>
   );
 }
+
 function Logo() {
   return (
     <div className="app-header">
@@ -29,11 +41,16 @@ function Logo() {
   );
 }
 
-function TravelList({ items, onDeleteItem }) {
+function TravelList({ items, onDeleteItem, onToggleItem }) {
   return (
     <ul className="list">
       {items.map((item) => (
-        <Item item={item} DeleteItem={onDeleteItem} key={item.id} />
+        <Item
+          item={item}
+          DeleteItem={onDeleteItem}
+          ToggleItem={onToggleItem}
+          key={item.id}
+        />
       ))}
     </ul>
   );
@@ -88,11 +105,16 @@ function Form({ onAddItem }) {
   );
 }
 
-function Item({ item, DeleteItem }) {
+function Item({ item, DeleteItem, ToggleItem }) {
+  const packed = item.packed ? "item__packed" : "";
   return (
     <li className="item">
-      <input type="checkbox" />
-      <span>
+      <input
+        type="checkbox"
+        checked={item.packed}
+        onChange={() => ToggleItem(item.id)}
+      />
+      <span className={`${packed}`}>
         {item.quantity > 1 ? `(${item.quantity} x )` : ""}
         {item.description}
       </span>
