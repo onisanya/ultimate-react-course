@@ -1,5 +1,21 @@
 import { useState } from "react";
 
+function App() {
+  const [items, setItems] = useState([]);
+  const handleAddItem = (item) => {
+    setItems((items) => [...items, item]);
+  };
+
+  return (
+    <div className="app">
+      <Logo />
+      <Form onAddItem={handleAddItem} />
+      <TravelList items={items} />
+      <Stats />
+    </div>
+  );
+}
+
 function Logo() {
   return (
     <div className="app-header">
@@ -8,26 +24,33 @@ function Logo() {
   );
 }
 
-function TravelList() {
+function TravelList({ items }) {
   return (
     <ul className="list">
-      <Item />
-      <Item />
-      <Item />
+      {items.map((item) => (
+        <Item item={item} key={item.id} />
+      ))}
     </ul>
   );
 }
 
-function Form() {
+function Form({ onAddItem }) {
   const [quantity, setQuantity] = useState(1);
-
+  const [description, setDescription] = useState("");
   function reset() {
     setQuantity(1);
+    setDescription("");
+    document.querySelector("input").value = "";
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Submitting");
+
+    if (!description) return;
+
+    const newItem = { description, quantity, packed: false, id: Date.now() };
+    onAddItem(newItem);
+    console.log("newItem:", newItem);
     reset();
   }
 
@@ -48,7 +71,11 @@ function Form() {
       <span className={quantity <= 1 ? "multiplier" : "multiplier__active"}>
         {quantity} x
       </span>
-      <input type="text" placeholder="Item description" />
+      <input
+        type="text"
+        placeholder="Item description"
+        onChange={(e) => setDescription(e.target.value)}
+      />
       <button onClick={(e) => modifyQuantity(e, 1)}>+</button>
       <button onClick={(e) => modifyQuantity(e, -1)}>-</button>
       <button onClick={handleSubmit}>Add</button>
@@ -56,24 +83,16 @@ function Form() {
   );
 }
 
-function Item() {
+function Item({ item }) {
   return (
     <li className="item">
       <input type="checkbox" />
-      <span>India</span>
+      <span>
+        {item.quantity > 1 ? `(${item.quantity} x )` : ""}
+        {item.description}
+      </span>
       <button className="delete">❌</button>
     </li>
-  );
-}
-
-function App() {
-  return (
-    <div className="app">
-      <Logo />
-      <Form />
-      <TravelList />
-      <Stats />
-    </div>
   );
 }
 
