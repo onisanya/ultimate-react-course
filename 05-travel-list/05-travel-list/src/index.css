@@ -184,3 +184,29 @@ input[type="checkbox"] {
   font-weight: 700;
   padding: 3.2rem 0;
 }
+
+.progress-bar-container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  margin-left: 30%;
+  margin-right: 30%;
+  height: 80px;
+  background-color: #8b6161;
+  z-index: 1000;
+  border-color: rgba(131, 128, 128, 0.575);
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 30px;
+}
+.progress-bar {
+  position: absolute;
+  height: 96%;
+  width: 70%;
+  margin: 4px;
+  align-self: center;
+  justify-self: start;
+  border-radius: 28px;
+  background-color: #4caf50;
+  transition: width 0.25s;
+}

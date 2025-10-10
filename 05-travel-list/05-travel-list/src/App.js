@@ -28,7 +28,8 @@ export default function App() {
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
       />
-      <Stats />
+      {/* <ProgressBar ratio={40} /> */}
+      <Stats items={items} />
     </div>
   );
 }
@@ -107,6 +108,9 @@ function Form({ onAddItem }) {
 
 function Item({ item, DeleteItem, ToggleItem }) {
   const packed = item.packed ? "item__packed" : "";
+
+  ////////////////
+
   return (
     <li className="item">
       <input
@@ -125,10 +129,31 @@ function Item({ item, DeleteItem, ToggleItem }) {
   );
 }
 
-function Stats() {
+function Stats({ items }) {
+  const total = items.length;
+  const packed = items.filter((item) => item.packed).length;
+  const ratio = Math.round((packed / total) * 100);
+
+  ////////////////////
   return (
     <footer className="stats">
-      <em> 0 items</em>
+      <ProgressBar ratio={ratio} />
+      <em>
+        {packed} of {total}
+      </em>
     </footer>
+  );
+}
+
+function ProgressBar({ ratio }) {
+  return (
+    <div className="progress-bar-container">
+      <div
+        className="progress-bar"
+        style={{
+          width: `${ratio}%`,
+        }}
+      ></div>
+    </div>
   );
 }
