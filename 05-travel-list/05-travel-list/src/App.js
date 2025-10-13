@@ -44,16 +44,18 @@ function Logo() {
 
 function TravelList({ items, onDeleteItem, onToggleItem }) {
   return (
-    <ul className="list">
-      {items.map((item) => (
-        <Item
-          item={item}
-          DeleteItem={onDeleteItem}
-          ToggleItem={onToggleItem}
-          key={item.id}
-        />
-      ))}
-    </ul>
+    <div className="list">
+      <ul className="list">
+        {items.map((item) => (
+          <Item
+            item={item}
+            DeleteItem={onDeleteItem}
+            ToggleItem={onToggleItem}
+            key={item.id}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 
