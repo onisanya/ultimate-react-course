@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import AccordionSimple from "./Accordion_simple";
+import Slider from "./Slider";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <AccordionSimple textContent="Lorem ipsum dolor sit amet." />
       <AccordionSimple textContent="lorem150" />
       <AccordionSimple textContent="lorem250" />
+      <Slider />
     </div>
   );
 }
