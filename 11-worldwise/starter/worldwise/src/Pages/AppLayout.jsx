@@ -1,13 +1,20 @@
 import PageNav from "../Components/PageNav";
 import AppNav from "../Components/AppNav";
+import Sidebar from "../Components/Sidebar";
+import Map from "../Components/Map";
+import styles from "./AppLayout.module.css";
+import { useState, useEffect } from "react";
+
+
 
 export default function AppLayout() {
   return (
-    <div>
-      <PageNav />
-      <AppNav />
-
-      <h1>App Layout</h1>
-    </div>
+    <>
+      <div className={styles.app}>
+        <AppNav />
+        <Sidebar />
+        <Map />
+      </div>
+    </>
   );
 }
