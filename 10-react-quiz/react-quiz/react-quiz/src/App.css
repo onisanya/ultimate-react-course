@@ -82,6 +82,12 @@ html {
   text-align: center;
 }
 
+.answers {
+  align-self: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+
 .answer:hover {
   background-color: #61dafb;
   color: #282c34;
@@ -102,6 +108,7 @@ html {
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.6rem;
+  max-height: 6rem;
 }
 
 .nav_button:hover {
