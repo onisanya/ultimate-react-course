@@ -1,10 +1,13 @@
-import logo from '../logo.svg';
+import logo from "../logo.svg";
 
 function Header() {
   return (
-    <header className='aApp-header'>
+    <header className="app-header">
       <img src={logo} className="App-logo" alt="logo" />
-      <h2>Welcome to the React Quiz</h2>
+      <div className="welcome-container">
+        <h2 className="welcome">Welcome to the</h2>
+        <h1>React Quiz</h1>
+      </div>
     </header>
   );
 }
