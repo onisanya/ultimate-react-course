@@ -1,3 +1,7 @@
 export default function Answer({ answer }) {
-  return <p className="answer">{answer}</p>;
+  return (
+    <button className="answer_button">
+      <p className="answer">{answer}</p>
+    </button>
+  );
 }

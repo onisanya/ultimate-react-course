@@ -1,48 +1,62 @@
-import { react, useEffect, useState, useReducer } from "react";
+import { react, useEffect, useState, useReducer, useContext } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
-// import { QuizContext, QuizProvider } from "./components/QuizContext";
+import {
+  QuestionContext,
+  QuestionProvider,
+} from "./components/QuestionContext";
 import Question from "./components/Question";
 
 function App() {
   const API_URL = "http://localhost:8000/questions";
   const [quizState, setQuizState] = useState({
-    questions: [],
+    currQuestion: 0,
+    selectedAnswer: null,
     lastQuestion: 0,
     score: 0,
     showResults: false,
     loading: false,
+    answers: [],
   });
-  const [currAnswer, setCurrAnswer] = useState(0);
+  // const [currAnswer, setCurrAnswer] = useState(0);
+  const [questions, setQuestions] = useState([]);
 
   // nav reducer
-  function reducerNav(stateNav, action) {
+
+  useEffect(() => {
+    console.log("Fetching questions... ");
+    const fetchQuestions = async () => {
+      // Only fetch if questions haven't been loaded yet
+      if (questions.length > 0) {
+        console.log("Questions already loaded, skipping fetch.");
+        return;
+      }
+
+      const response = await fetch(API_URL);
+      console.log("res: ", response);
+      const data = await response.json();
+      console.log("data: ", data);
+      // setQuizState((prevState) => ({ ...prevState, questions: data }));
+      setQuestions(data);
+    };
+    fetchQuestions();
+  }, []);
+
+  console.log("Current Question: ", quizState.currQuestion);
+
+  function reducerNav({ currQuestion, lastQuestion, maxQuestions }, action) {
     if (!stateNav) return;
     switch (action.type) {
       case "next": {
-        return {
-          ...stateNav,
-          currQuestion:
-            stateNav.currQuestion + 1 <= quizState.questions.length - 1
-              ? stateNav.currQuestion + 1
-              : stateNav.currQuestion,
-        };
+        return currQuestion + 1 <= maxQuestions - 1
+          ? currQuestion + 1
+          : currQuestion;
       }
       case "previous": {
-        return {
-          ...stateNav,
-          currQuestion:
-            stateNav.currQuestion - 1 >= 0 ? stateNav.currQuestion - 1 : 0,
-        };
+        return currQuestion - 1 >= 0 ? currQuestion - 1 : 0;
       }
-      case "submit": {
-        // Handle answer submission
-        return {
-          ...stateNav,
-          answers: [...stateNav.answers, action.payload],
-        };
-      }
+
       default:
         return stateNav;
     }
@@ -53,43 +67,29 @@ function App() {
     answers: [],
   });
 
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      // Only fetch if questions haven't been loaded yet
-      if (quizState.questions.length > 0) return;
-
-      const response = await fetch(API_URL);
-      console.log("res: ", response);
-      const data = await response.json();
-      console.log("data: ", data);
-      setQuizState((prevState) => ({ ...prevState, questions: data }));
-    };
-    fetchQuestions();
-  }, []);
-
-  useEffect(() => {
-    console.log(
-      "Current Question: ",
-      quizState.questions[stateNav.currQuestion]
-    );
-    console.log("Answers: ", stateNav.answers);
-  }, [stateNav.currQuestion, stateNav.answers]);
-
-  console.log("Current Question: ", quizState.questions[stateNav.currQuestion]);
+  // useEffect(() => {
+  //   console.log(
+  //     "Current Question: ",
+  //     quizState.questions[quizState.currQuestion]
+  //   );
+  //   console.log("Answers: ", stateNav.answers);
+  // }, [quizState]);
 
   // mounted components
   return (
-    <div className="App">
-      <Header />
-      {quizState.questions.length > 0 ? (
-        <Question
-          question={quizState.questions[stateNav.currQuestion]}
-          reducerNav={dispatchNav}
-        />
-      ) : (
-        <Loader />
-      )}
-    </div>
+    <QuestionProvider>
+      <div className="App">
+        <Header />
+        {questions.length > 0 ? (
+          <Question
+            question={questions[quizState.currQuestion]}
+            reducerNav={dispatchNav}
+          />
+        ) : (
+          <Loader />
+        )}
+      </div>
+    </QuestionProvider>
   );
 }
 

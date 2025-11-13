@@ -7,9 +7,11 @@ import NavigationButton from "./NavigationButton";
 export default function Question({ question, reducerNav }) {
   return (
     <div className="question_container">
-      <h2 className="question">{question.question}</h2>
+      <div className="question">
+        <h2>{question.question}</h2>
+      </div>
       <AnswersBlock answers={question.options} />
-      <div className="answer_section">
+      <div className="nav_section">
         <NavigationButton
           id="previous"
           onClick={() => reducerNav({ type: "previous" })}

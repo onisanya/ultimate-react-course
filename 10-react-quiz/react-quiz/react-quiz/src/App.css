@@ -70,30 +70,50 @@ html {
   margin-top: 2rem;
 }
 
-.answer {
-  background-color: #282c34;
+.question {
+  display: flex;
+  border-style: solid;
+  border-width: 4px;
+  border-color: hsl(220, 22%, 63%);
+  margin-bottom: 4rem;
+  border-radius: 3000px;
+}
+
+.question h2 {
+  font-size: 4rem;
+  padding: 2rem;
+  margin: 0 2rem;
+}
+
+.answer_button {
+  background-color: #49515f;
   color: white;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
   margin: 1rem;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.8rem;
-  width: 300px;
-  text-align: center;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
 }
 
 .answers {
+  display: flex;
+  flex-direction: column;
   align-self: center;
   align-items: center;
+  width: 100%;
   padding: 0 2rem;
 }
 
-.answer:hover {
+.answer_button:hover {
   background-color: #61dafb;
   color: #282c34;
 }
 
-.answer_section {
+.nav_section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* flex-direction: row; */
@@ -109,6 +129,10 @@ html {
   cursor: pointer;
   font-size: 1.6rem;
   max-height: 6rem;
+}
+
+.nav_button--hidden {
+  visibility: hidden;
 }
 
 .nav_button:hover {
