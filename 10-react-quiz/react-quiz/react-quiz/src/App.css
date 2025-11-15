@@ -99,6 +99,16 @@ html {
   /* text-align: center; */
 }
 
+.answer_button-selected {
+  background-color: #61dafb;
+  color: #282c34;
+}
+.answer_button-not_selected {
+  background-color: #414245;
+  color: white;
+  opacity: 0.6;
+}
+
 .answers {
   display: flex;
   flex-direction: column;

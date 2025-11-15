@@ -6,13 +6,26 @@ export const QuestionContext = createContext(null);
 // 2. PROVIDE CONTEXT - This component wraps your app and provides the data
 export function QuestionProvider({ children }) {
   // const [maxQuestions, setMaxQuestions] = useState(maxQuestions);
-  const [currQuestion, setCurrQuestion] = useState(0);
-  const [lastQuestion, setLastQuestion] = useState(0);
+
+  const [quizState, setQuizState] = useState({
+    score: 0,
+    showResults: false,
+    loading: false,
+    selectedAnswer: null,
+  });
+
+  const selectAnswer = (option) => {
+    setQuizState((prevState) => ({
+      ...prevState,
+      selectedAnswer: option,
+    }));
+    console.log("Selected answer: ", quizState.selectedAnswer);
+  };
 
   // The "value" prop contains all data and functions you want to share
 
   return (
-    <QuestionContext.Provider value={{ currQuestion, lastQuestion }}>
+    <QuestionContext.Provider value={{ quizState, selectAnswer }}>
       {children}
     </QuestionContext.Provider>
   );
