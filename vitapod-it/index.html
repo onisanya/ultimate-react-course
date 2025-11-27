@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Vitapod | Coltivazione Avanzata di Funghi in Ambiente Controllato
+    </title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #2e7d32;
+        --primary-light: #4caf50;
+        --primary-dark: #1b5e20;
+        --secondary: #795548;
+        --accent: #ff9800;
+        --light: #f5f5f5;
+        --dark: #212121;
+        --gray: #757575;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f9f9f9;
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .cta-button {
+        background-color: var(--primary);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .cta-button:hover {
+        background-color: var(--primary-dark);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 180px 0 100px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      /* Section Styling */
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .section-title p {
+        color: var(--gray);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Comparison Section */
+      .comparison {
+        background-color: white;
+      }
+
+      .comparison-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .comparison-box {
+        flex: 1;
+        min-width: 300px;
+        background-color: var(--light);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .comparison-header {
+        background-color: var(--primary);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .comparison-header h3 {
+        font-size: 1.5rem;
+      }
+
+      .comparison-content {
+        padding: 30px;
+      }
+
+      .comparison-list {
+        list-style: none;
+      }
+
+      .comparison-list li {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .comparison-list i {
+        color: var(--primary);
+        margin-right: 10px;
+        margin-top: 5px;
+      }
+
+      /* Efficiency Section */
+      .efficiency {
+        background-color: var(--light);
+      }
+
+      .efficiency-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .efficiency-chart {
+        flex: 1;
+        min-width: 300px;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .chart-bar {
+        margin-bottom: 20px;
+      }
+
+      .chart-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .chart-bar-inner {
+        height: 30px;
+        background-color: #e0e0e0;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .chart-bar-fill {
+        height: 100%;
+        background-color: var(--primary);
+        border-radius: 15px;
+        transition: width 1s ease-in-out;
+      }
+
+      .efficiency-text {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .efficiency-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--primary);
+      }
+
+      /* Features Section */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .feature-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-img {
+        height: 200px;
+        background-color: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+      }
+
+      .feature-content {
+        padding: 25px;
+      }
+
+      .feature-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+          to right,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        text-align: center;
+        padding: 100px 0;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        font-size: 1.1rem;
+      }
+
+      .cta-button.large {
+        padding: 15px 40px;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 60px 0 30px;
+      }
+
+      .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--primary-light);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid #444;
+        color: #bbb;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <i class="fas fa-seedling"></i>
+            Vitapod
+          </div>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#comparison">Confronto</a></li>
+            <li><a href="#efficiency">Efficienza</a></li>
+            <li><a href="#features">Caratteristiche</a></li>
+            <li><a href="#contact">Contatti</a></li>
+          </ul>
+          <a href="#contact" class="cta-button">Inizia Ora</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>
+          Rivoluzionare la Coltivazione di Funghi con la Tecnologia dei
+          Container Intelligenti
+        </h1>
+        <p>
+          Le nostre fattorie avanzate in container offrono rese 7 volte
+          superiori con controllo climatico preciso, produzione tutto l'anno e
+          impatto ambientale minimo.
+        </p>
+        <a href="#comparison" class="cta-button large">Scopri la Differenza</a>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+      <div class="container">
+        <div class="section-title">
+          <h2>Coltivazione Tradizionale vs. Vitapod</h2>
+          <p>
+            Scopri come la tecnologia <i>VITAPOD</i> supera i metodi
+            tradizionali di coltivazione dei funghi
+          </p>
+        </div>
+        <div class="comparison-container">
+          <div class="comparison-box">
+            <div class="comparison-header">
+              <h3>Coltivazione Tradizionale</h3>
+            </div>
+            <div class="comparison-content">
+              <ul class="comparison-list">
+                <li>
+                  <i class="fas fa-times-circle"></i>
+                  <span>Limitazioni di produzione stagionale</span>
+                </li>
+                <li>
+                  <i class="fas fa-times-circle"></i>
+                  <span>Vulnerabile alle condizioni meteorologiche</span>
+                </li>
+                <li>
+                  <i class="fas fa-times-circle"></i>
+                  <span>Costi elevati per terreni e strutture</span>
+                </li>
+                <li>
+                  <i class="fas fa-times-circle"></i>
+                  <span>Qualità e resa inconsistenti</span>
+                </li>
+                <li>
+                  <i class="fas fa-times-circle"></i>
+                  <span>Maggiore consumo d'acqua</span>
+                </li>
+                <li>
+                  <i class="fas fa-times-circle"></i>
+                  <span>Rischi di pesticidi e contaminazione</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="comparison-box">
+            <div class="comparison-header">
+              <h3>VITAPOD</h3>
+            </div>
+            <div class="comparison-content">
+              <ul class="comparison-list">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span>Produzione tutto l'anno in qualsiasi clima</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span>Ambiente completamente controllato</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span>Ingombro compatto, design scalabile</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span>Qualità premium consistente</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span>90% in meno di consumo d'acqua</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span>Ambiente sterile, senza pesticidi</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Efficiency Section -->
+    <section class="efficiency" id="efficiency">
+      <div class="container">
+        <div class="section-title">
+          <h2>Efficienza 7 Volte Superiore</h2>
+          <p>
+            Il nostro approccio basato sui dati offre risultati
+            significativamente migliori rispetto ai metodi tradizionali
+          </p>
+        </div>
+        <div class="efficiency-container">
+          <div class="efficiency-chart">
+            <div class="chart-bar">
+              <div class="chart-label">
+                <span>Resa per Metro Quadrato</span>
+                <span>700%</span>
+              </div>
+              <div class="chart-bar-inner">
+                <div class="chart-bar-fill" style="width: 100%"></div>
+              </div>
+            </div>
+            <div class="chart-bar">
+              <div class="chart-label">
+                <span>Efficienza Idrica</span>
+                <span>90%</span>
+              </div>
+              <div class="chart-bar-inner">
+                <div class="chart-bar-fill" style="width: 90%"></div>
+              </div>
+            </div>
+            <div class="chart-bar">
+              <div class="chart-label">
+                <span>Efficienza Energetica</span>
+                <span>65%</span>
+              </div>
+              <div class="chart-bar-inner">
+                <div class="chart-bar-fill" style="width: 65%"></div>
+              </div>
+            </div>
+            <div class="chart-bar">
+              <div class="chart-label">
+                <span>Cicli di Produzione all'Anno</span>
+                <span>12</span>
+              </div>
+              <div class="chart-bar-inner">
+                <div class="chart-bar-fill" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="efficiency-text">
+            <h3>Massimizzare la Produzione, Minimizzare le Risorse</h3>
+            <p>
+              La nostra tecnologia di coltivazione in container consente la
+              produzione tutto l'anno con condizioni ambientali controllate con
+              precisione. Questo si traduce in:
+            </p>
+            <ul class="comparison-list">
+              <li>
+                <i class="fas fa-check"></i>
+                <span
+                  >Cicli di crescita più rapidi (3-4 settimane vs. 8-10
+                  settimane)</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span
+                  >Coltivazione ad alta densità con scaffalature verticali</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span
+                  >Riduzione degli sprechi attraverso l'uso ottimizzato delle
+                  risorse</span
+                >
+              </li>
+              <li>
+                <i class="fas fa-check"></i>
+                <span
+                  >Qualità costante indipendentemente dalle condizioni
+                  esterne</span
+                >
+              </li>
+            </ul>
+            <p>
+              Con il nostro sistema, puoi produrre fino a 900 kg di funghi al
+              mese da un singolo container da 40 piedi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tecnologia Avanzata dei Container Intelligenti</h2>
+          <p>
+            I nostri container appositamente progettati incorporano tecnologia
+            agricola all'avanguardia
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-img">
+              <i class="fas fa-thermometer-half"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Controllo Climatico di Precisione</h3>
+              <p>
+                Mantieni temperatura, umidità e livelli di CO2 ottimali per ogni
+                varietà di fungo con i nostri sistemi automatizzati.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-img">
+              <i class="fas fa-sun"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Illuminazione LED Avanzata</h3>
+              <p>
+                I sistemi LED a spettro completo forniscono le lunghezze d'onda
+                di luce perfette per lo sviluppo dei funghi riducendo al minimo
+                il consumo energetico.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-img">
+              <i class="fas fa-tint"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Irrigazione Automatizzata</h3>
+              <p>
+                I sistemi di nebulizzazione e irrigazione precisi forniscono
+                esattamente la giusta quantità di umidità a intervalli ottimali.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-img">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Monitoraggio Intelligente</h3>
+              <p>
+                Sensori in tempo reale e monitoraggio remoto ti permettono di
+                tracciare e regolare le condizioni di coltivazione da qualsiasi
+                luogo.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-img">
+              <i class="fas fa-recycle"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Design Sostenibile</h3>
+              <p>
+                Riciclo dell'acqua, sistemi ad alta efficienza energetica e
+                container marittimi riutilizzati riducono al minimo l'impatto
+                ambientale.
+              </p>
+            </div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-img">
+              <i class="fas fa-expand-arrows-alt"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Coltivazione Verticale</h3>
+              <p>
+                Le scaffalature a più livelli massimizzano la capacità
+                produttiva in un ingombro compatto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <h2>Pronto a Trasformare la Tua Produzione di Funghi?</h2>
+        <p>
+          Unisciti alla rivoluzione agricola con le nostre soluzioni di
+          coltivazione in container. Aumenta le rese, riduci i costi e coltiva
+          funghi premium tutto l'anno.
+        </p>
+        <a href="#contact" class="cta-button large">Prenota una Consulenza</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>ContainerGrow</h3>
+            <p>
+              Rivoluzionare l'agricoltura attraverso la tecnologia innovativa di
+              coltivazione in container.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Rapidi</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#comparison">Confronto</a></li>
+              <li><a href="#efficiency">Efficienza</a></li>
+              <li><a href="#features">Caratteristiche</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contattaci</h3>
+            <ul class="footer-links">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Via Innovazione Agricola
+                123
+              </li>
+              <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+              <li><i class="fas fa-envelope"></i> info@containergrow.com</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 ContainerGrow. Tutti i diritti riservati.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple animation for chart bars
+      document.addEventListener("DOMContentLoaded", function () {
+        const bars = document.querySelectorAll(".chart-bar-fill");
+        bars.forEach((bar) => {
+          const width = bar.style.width;
+          bar.style.width = "0";
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 500);
+        });
+      });
+    </script>
+  </body>
+</html>
